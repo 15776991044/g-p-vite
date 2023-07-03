@@ -7,7 +7,6 @@
 		"default_icon": {
 				"19": "icons/icon1.png"
 		},
-		"default_popup": "popup.html",
 		"default_title": "图片收集测试"
 	},
 	"permissions": [
@@ -38,7 +37,7 @@
 						"https://*/*"
 				],
 				"css": [
-				"js/style.css"
+				"style.css"
 				],
 				"js": [
 					"js/content.js"

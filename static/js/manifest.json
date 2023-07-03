@@ -29,7 +29,7 @@
 	"matches": ["*://*.xxxxxx.com/*"]
 	},
 	"background": {
-		"service_worker": "js/content.js"
+		"service_worker": "js/background.js"
 	},
 	"content_scripts": [
 		{
@@ -38,7 +38,8 @@
 						"https://*/*"
 				],
 				"css": [
-				"js/style.css"
+					"css/name3.css",
+					"css/name2.css"
 				],
 				"js": [
 					"js/content.js"

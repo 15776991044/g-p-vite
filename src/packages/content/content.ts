@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from '@/router';
 import actions from '@/shared/actions'
 
 import { setupStore } from '@/store';
@@ -13,44 +12,34 @@ import 'virtual:svg-icons-register';
 import 'element-plus/theme-chalk/dark/css-vars.css';
 import 'uno.css';
 import '@/styles/index.scss'
-import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+// import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 let app: any
+const appId='app-content'
+const app2=document.createElement('div')
+app2.id=appId
+document.body.appendChild(app2);
+
+
 function render(props:any) {
   props&&actions.setActions(props)
   const container=props?.container
   app = createApp(App);
-
-  app.use(ElementPlus, { locale: zhCn })
+  app.use(ElementPlus)
   // 全局注册 自定义指令(directive)
   setupDirective(app);
   // 全局注册 状态管理(store)
   setupStore(app);
-  app.use(router)
   const c = container
-  ? container.querySelector("#app-content")
-  : "#app-content"
+  ? container.querySelector(`#${appId}`)
+  : `#${appId}`
   app.mount(c)
 }
-if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
   render({})
-}
 
-renderWithQiankun({
-  async mount(props) {
-    render(props);
-  },
-  bootstrap() {
-  },
-  unmount(props: any) {
-    app.unmount();
-  },
-  update(props: any) {
-  },
-});
+
 
 

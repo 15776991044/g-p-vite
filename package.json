@@ -7,7 +7,8 @@
     "serve:popup": "vite serve src/packages/popup/ --mode development",
     "serve:content": "vite serve src/packages/content/ --mode development",
     "serve": "vite serve --mode development",
-    "build": "vite build --mode production"
+    "build": "vite build -c vite.config.ts && vite build -c vite.config.script.ts && node build.js"
+
   },
   "dependencies": {
     "@vueuse/core": "^9.1.1",

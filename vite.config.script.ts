@@ -64,20 +64,21 @@ return {
       'process.env': {}
     },    
     build: {
-      // lib: {
-      //   entry: [
-      //     path.resolve(__dirname, 'src/packages/content/content.ts')],
-      //     name: 'content',
-      //     fileName: (format) => `js/content.js`
-      // },      
+      lib: {
+        entry: [
+          path.resolve(__dirname, 'src/packages/content/content.ts')],
+          name: 'content',
+          fileName: (format) => `content.js`
+      }, 
+      outDir: 'dist/js'  ,   
       // rollup 配置打包项
       rollupOptions: {
         // 多页面入口配置
-        input: {
-            popup: path.resolve(__dirname, 'popup.html'),
-            // popup: path.resolve(__dirname, 'background.html')
-            // content: path.resolve(__dirname, 'content.html'),
-        }
+        // input: {
+        //     popup: path.resolve(__dirname, 'popup.html'),
+        //     // popup: path.resolve(__dirname, 'background.html')
+        //     // content: path.resolve(__dirname, 'content.html'),
+        // }
         // , output: {
         //     chunkFileNames: 'static/js/[name].js',
         //     entryFileNames: "static/js/[name].js",
