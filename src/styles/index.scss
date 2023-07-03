@@ -1,0 +1,35 @@
+@import './reset.scss';
+
+.base-table{
+  padding: 15px;
+  box-sizing: border-box;
+
+  &__form{
+
+    .el-form-item__label{
+      font-weight: 700;
+    }
+
+    .el-form--inline .el-form-item{
+      margin-right: 15px;
+    }
+
+  }
+
+  .el-button>span svg{
+    margin-right: 5px;
+  }
+
+  .el-link{
+    margin: 0 3px;
+  }
+
+  .el-link>span svg{
+    margin-right: 2px;
+  }
+
+  .retry {
+    padding: 200px 0px;
+    text-align: center;
+  }
+}

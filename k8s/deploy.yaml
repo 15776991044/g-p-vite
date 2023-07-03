@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "-"
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: base
+          image: baseimage
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

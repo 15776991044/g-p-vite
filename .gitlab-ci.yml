@@ -1,0 +1,44 @@
+variables:
+  DOCKER_HUB_ADDRESS: hub.dev.laningtech.net
+  DOCKER_HUB_PROJECT: apps
+  DOCKER_HUB_USER: admin
+  DOCKER_HUB_PASSWD: ling@0818
+  IMAGE_NAME: vite
+  IMAGE_TAG: prod
+  NAMESPACE: g-p
+
+stages:
+  - build
+  - deploy
+  
+build:
+  stage: build
+  only:
+    - master
+  retry:
+    max: 2
+  before_script:
+    - docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWD} ${DOCKER_HUB_ADDRESS}
+  script:
+    - /bin/sh build-docker.sh
+    - docker push ${DOCKER_HUB_ADDRESS}/${DOCKER_HUB_PROJECT}/${NAMESPACE}-${IMAGE_NAME}
+
+build-tag:
+  stage: build
+  only:
+    - tags
+  retry:
+    max: 1
+  before_script:
+    - docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWD} ${DOCKER_HUB_ADDRESS}
+  script:
+    - /bin/sh build-docker.sh -t ${DOCKER_HUB_ADDRESS}/${DOCKER_HUB_PROJECT}/${NAMESPACE}-${IMAGE_NAME}:${CI_COMMIT_REF_NAME}
+    - docker push ${DOCKER_HUB_ADDRESS}/${DOCKER_HUB_PROJECT}/${NAMESPACE}-${IMAGE_NAME}:${CI_COMMIT_REF_NAME}
+
+deploy:
+  image: curlimages/curl:7.84.0
+  stage: deploy
+  only:
+    - master
+  script:
+    - curl -X POST -F variables[MODULE_NAME]=${NAMESPACE}-${IMAGE_NAME} -F variables[MODULE_PATH]=${NAMESPACE}-${IMAGE_NAME} -F token=9b4ca57b70c0f24584d1cb5441fcf6 -F ref=master http://git.dev.laningtech.net/api/v4/projects/582/trigger/pipeline

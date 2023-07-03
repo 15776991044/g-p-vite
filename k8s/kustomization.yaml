@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: g-p
+namePrefix: vite
+nameSuffix: prod
+
+commonLabels:
+  app: vite-prod
+
+resources:
+  - deploy.yaml
+  - svc.yaml
+
+images:
+  - name: baseimage
+    newName: hub.dev.laningtech.net/apps/g-p-vite
+    newTag: ""
+
+generatorOptions:
+  disableNameSuffixHash: false
