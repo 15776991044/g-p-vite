@@ -6,10 +6,10 @@ import { setupStore } from '@/store';
 import { setupDirective } from '@/directive';
 
 // 本地SVG图标
-// import 'virtual:svg-icons-register';
+import 'virtual:svg-icons-register';
 // 样式
 import 'element-plus/theme-chalk/dark/css-vars.css';
-// import 'uno.css';
+import 'uno.css';
 import '@/styles/index.scss'
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 

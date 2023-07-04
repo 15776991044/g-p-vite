@@ -9,13 +9,13 @@ import { setupDirective } from '@/directive';
 // 本地SVG图标
 // import 'virtual:svg-icons-register';
 // 样式
-import 'element-plus/theme-chalk/dark/css-vars.css';
-import 'uno.css';
-import '@/styles/index.scss'
+// import 'element-plus/theme-chalk/dark/css-vars.css';
+// import 'uno.css';
+// import '@/styles/index.scss'
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
 import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
+// import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 let app: any
