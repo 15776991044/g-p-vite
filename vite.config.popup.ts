@@ -74,9 +74,7 @@ return {
       rollupOptions: {
         // 多页面入口配置
         input: {
-            popup: path.resolve(__dirname, 'popup.html'),
-            content: path.resolve(__dirname, 'content.html'),
-            background: path.resolve(__dirname, 'background.html'),
+            popup: path.resolve(__dirname, 'popup.html')
         }
         , output: {
             chunkFileNames: 'static/js/[name].js',

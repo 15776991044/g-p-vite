@@ -4,6 +4,10 @@
       <el-button type="primary" style="margin-left: 16px" @click="drawer = true">
         查看图片列表
       </el-button>
+      <el-button type="primary" style="margin-left: 16px" @click="saveMyUrl">
+        发送请求
+      </el-button>      
+      
     </div>
 
     <el-drawer
@@ -34,6 +38,7 @@
 
 <script setup>
 import AddEditPerson from "@/packages/content/views/add-edit/index.vue"
+import {saveMyUrl} from "@/packages/content/index"
 const drawer = ref(false)
 const imgList=ref([])
 function getUrlList(){
@@ -41,7 +46,7 @@ function getUrlList(){
   console.log('imgList.value',imgList.value)
 }
 const dialog = reactive({
-  visible: true,
+  visible: false,
 });
 
 </script>

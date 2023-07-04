@@ -1,17 +1,14 @@
 <template>
   <div>
     <el-config-provider namespace="ep">
-      <Menu v-if="navFlag" />
-      <router-view />
+      <Home />
     </el-config-provider>
   </div>
 </template>
 
 <script setup>
-import Menu from '@/components/Menu.vue'
-const navFlag = computed(() => {
-  return  process.env.NODE_ENV == 'development'
-})
+import Home from "./views/home/index.vue"
+
 </script>
 
 <style lang="scss">
