@@ -70,7 +70,7 @@ return {
           name: 'content',
           fileName: (format) => `content.js`
       }, 
-      outDir: 'dist/js'  ,   
+      outDir: 'dist/content'  ,   
       // rollup 配置打包项
       rollupOptions: {
         // 多页面入口配置
