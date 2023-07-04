@@ -20,3 +20,28 @@ export function handleCookie(params) {
 
 	});
 }
+function getDomain(url){
+	if(!url){return ''}
+	var domain = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im)[0];
+	console.log(domain)
+	return domain
+}
+// 获取某一网站，某一个key的cookie
+export function getCookieVlaue(url,key) {
+	let res=''
+	chrome.tabs.query({ }, tabs => {
+    tabs.forEach(element => {
+			if(getDomain(element.url)==getDomain(url)){
+				chrome.cookies.getAll({ url }, function (cookies) {
+				console.log(url,cookies)
+				res = cookies.find(item => {
+								return item.name==key
+							})
+			  })
+			}
+		});      
+  });
+	return res
+}
+
+

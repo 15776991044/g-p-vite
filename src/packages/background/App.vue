@@ -4,6 +4,12 @@
       <span @click="()=>{storageBgUrl({type: 'methods',url: 'storageBgUrl', data: {a:1} })}">
           sss
       </span>
+      <span @click="()=>{storageBgUrl({type: 'methods',url: 'getbgCookie'})}">
+        getbgCookie
+      </span>
+      <span @click="()=>{storageBgUrl({type: 'methods',url: 'getLocal', data:'bg_url'  })}">
+          sss
+      </span>            
   </div>
 </template>
 

@@ -1,12 +1,15 @@
 
-import {handleCookie} from "@/utils/getCookies"
+import {handleCookie} from "@/chrome-utiles/getCookies"
 import {storageBgUrl} from "@/bg-api/index"
+import {lsitenLocal} from "@/chrome-utiles/storage"
+
 function handleInstall(details){
   console.log('chrome',chrome,chrome.tabs)
   handleCookie()
 }
 handleInstall()
-
+// 监听
+lsitenLocal()
 
 try {
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
@@ -18,24 +21,6 @@ try {
   })
 } catch (error) {
   console.log(error,data,bgMethods)
-  const request=data
-  switch(request.type) {
-    // 你可以定义任意内容，使用sendResponse()来返回它
-    case 'methods':
-        {
-          const {url,data} = request;
-          console.log(res,url,data,bgMethods?.[url])
-
-          if(bgMethods?.[url]){
-            bgMethods?.[url]?.(data).tnen((res)=>{
-              console.log(res)
-              sendResponse(res)
-            }).catch(err=>{
-              console.log(url,'err',err)
-            })
-          }
-        
-        }
-    break;
-}      
+  storageBgUrl(request, sender, sendResponse)
+    
 }
