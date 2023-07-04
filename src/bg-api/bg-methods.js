@@ -19,18 +19,17 @@ function storageBgUrl(data){
 
 // 存储后台cookie
 async function getbgCookie(data){
-  const bg_url_storage = await getBgLocal("bg_url")
-  return new Promise((resolve, reject)=> {
     const {key='bg_url'} = data||{}
+    const bg_url_storage = await getBgLocal("bg_url")
     if(!bg_url_storage){
-      resolve ({code:'9999',msg:'请填写后台链接，并登录后台'})
+      return ({code:'9999',msg:'请填写后台链接，并登录后台'})
     }
-    const bgCookie=getCookieVlaue(bg_url_storage,'ADMINTOKEN')
+    const bgCookie=await getCookieVlaue(bg_url_storage,'ADMINTOKEN')
+    console.log('bgCookie',bgCookie)
     if(!bgCookie){
-      resolve({code:'9998',msg:'请先前往后台系统，登录后，重试'})
+      return({code:'9998',msg:'请先前往后台系统，登录后，重试'})
     }
-      resolve({code:0,msg:'',data:bgCookie})
-    })
+    return({code:0,msg:'',data:bgCookie})
   }
 
   async function getBgLocal(key){

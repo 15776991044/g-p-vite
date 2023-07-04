@@ -39,6 +39,8 @@
 <script setup>
 import AddEditPerson from "@/packages/content/views/add-edit/index.vue"
 import {saveMyUrl} from "@/packages/content/index"
+import { getbgUrl,getbgCookie } from "@/msg-api/reginst"
+
 const drawer = ref(false)
 const imgList=ref([])
 function getUrlList(){
@@ -55,9 +57,9 @@ const dialog = reactive({
 .tool-box{
   position: fixed;
   right:0;
-  top:10px;
-  padding: 20px;
+  top:40px;
+  padding: 40px;
   background: #fff;
-  z-index: 1000;
+  z-index: 2000;
 }
 </style>
