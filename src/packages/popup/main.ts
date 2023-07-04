@@ -7,21 +7,21 @@ import { setupStore } from '@/store';
 import { setupDirective } from '@/directive';
 
 // 本地SVG图标
-// import 'virtual:svg-icons-register';
+import 'virtual:svg-icons-register';
 // 样式
-// import 'element-plus/theme-chalk/dark/css-vars.css';
-// import 'uno.css';
-// import '@/styles/index.scss'
+import 'element-plus/theme-chalk/dark/css-vars.css';
+import 'uno.css';
+import '@/styles/index.scss'
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 
 import ElementPlus from 'element-plus'
-// import 'element-plus/dist/index.css'
+import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 let app: any
-function render(props:any) {
-  props&&actions.setActions(props)
-  const container=props?.container
+function render(props: any) {
+  props && actions.setActions(props)
+  const container = props?.container
   app = createApp(App);
 
   app.use(ElementPlus, { locale: zhCn })
@@ -31,8 +31,8 @@ function render(props:any) {
   setupStore(app);
   app.use(router)
   const c = container
-  ? container.querySelector("#app-popup")
-  : "#app-popup"
+    ? container.querySelector("#app-popup")
+    : "#app-popup"
   app.mount(c)
 }
 if (!qiankunWindow.__POWERED_BY_QIANKUN__) {

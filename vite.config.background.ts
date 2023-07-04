@@ -17,11 +17,12 @@ const pathSrc = path.resolve(__dirname, "src");
 import { createHtmlPlugin } from 'vite-plugin-html'
 
 const testTarget = 'http://face.dev.laningtech.net'
+import copy from 'rollup-plugin-copy' //引入插件
 
 import { resolve } from 'path';
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
-return {
-    base:"/",
+  return {
+    base: "/",
     //
     // resolve: {
     //   // 设置文件目录别名
@@ -58,19 +59,19 @@ return {
       // 如下添加代码
       headers: {
         'Access-Control-Allow-Origin': '*', // 主应用获取子应用时跨域响应头
-      },      
+      },
     },
     define: {
       'process.env': {}
-    },    
+    },
     build: {
       lib: {
         entry: [
           path.resolve(__dirname, 'src/packages/background/background.ts')],
-          name: 'background',
-          fileName: (format) => `background.js`
-      }, 
-      outDir: 'dist/background'  ,   
+        name: 'background',
+        fileName: (format) => `background.js`
+      },
+      outDir: 'dist/background',
       // rollup 配置打包项
       rollupOptions: {
         // 多页面入口配置
@@ -87,7 +88,12 @@ return {
       },
     },
     plugins: [
-      vue(),     
+      vue(),
+      copy({
+        targets: [
+          { src: 'public1/*', dest: 'dist/' }, //执行拷贝
+        ]
+      }),
       UnoCSS({
         /* options */
       }),
@@ -137,12 +143,12 @@ return {
         symbolId: "icon-[dir]-[name]",
       }),
       createHtmlPlugin({
-        inject:{ // 注入到页面当中的数据
-          data:{
-            title:'vite'
+        inject: { // 注入到页面当中的数据
+          data: {
+            title: 'vite'
           }
         }
-      })      
+      })
     ]
   };
 });
