@@ -7,4 +7,11 @@ const getAdvList = async function (data: object | undefined) {
   return res
 }
 
-export default { getAdvList }
+// 获取广告列表
+const geta = async function (data: object | undefined) {
+  const res = await post('/facesearchapi/review/search', data, false)
+  return res
+}
+
+
+export default { getAdvList, geta }

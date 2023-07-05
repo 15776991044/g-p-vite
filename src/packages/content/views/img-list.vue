@@ -6,7 +6,11 @@
       </el-button>
       <el-button type="primary" style="margin-left: 16px" @click="getAdvList">
         发送请求
-      </el-button>      
+      </el-button> 
+      <el-button type="primary" style="margin-left: 16px" @click="geta">
+        geta
+      </el-button> 
+           
       
     </div>
 
@@ -38,7 +42,7 @@
 
 <script setup>
 import AddEditPerson from "@/packages/content/views/add-edit/index.vue"
-import { getAdvList } from "@/chrome-api/send-msg"
+import { getAdvList,geta } from "@/chrome-api/send-msg"
 
 const drawer = ref(false)
 const imgList=ref([])

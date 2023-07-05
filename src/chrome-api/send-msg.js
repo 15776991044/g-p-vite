@@ -49,4 +49,8 @@ export function getLoginCookie() {
 export function getAdvList() {
   return sendMsgToBG('getAdvList', { page: 1, page_size: 1 })
 }
+//前台，向后台请求接口getAdvList
+export function geta() {
+  return sendMsgToBG('geta', { page: 1, page_size: 1 })
+}
 
