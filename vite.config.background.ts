@@ -91,7 +91,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       vue(),
       copy({
         targets: [
-          { src: 'public1/*', dest: 'dist/' }, //执行拷贝
+          { src: 'chrome-plugin-public/*', dest: 'dist/' }, //执行拷贝
         ]
       }),
       UnoCSS({
