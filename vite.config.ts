@@ -54,6 +54,11 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           changeOrigin: true,
           ws: true
         },
+        '/personcollection/': {
+          target: testTarget,
+          changeOrigin: true,
+          ws: true
+        },
       },
       // 如下添加代码
       headers: {

@@ -42,7 +42,7 @@ export function getCookieVlaue(url, key) {
 					console.log('11', index, targetTabs.length, element)
 					chrome.cookies.getAll({ url }, function (cookies) {
 						console.log(url, cookies, key)
-						res = cookies.filter((item) => {
+						res = cookies.find((item) => {
 							console.log(item, item.name, key)
 							return item.name == key
 						})

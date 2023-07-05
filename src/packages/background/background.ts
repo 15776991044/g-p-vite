@@ -1,6 +1,6 @@
 
 import { msgHandler } from "@/chrome-api/index"
-import { lsitenLocal } from "@/chrome-utiles/storage"
+import { lsitenLocal } from "@/chrome-api/utils/storage"
 
 // 监听background-storage有变动
 lsitenLocal()

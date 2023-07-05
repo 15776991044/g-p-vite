@@ -2,7 +2,7 @@
   <div>
       qqq
       <span @click="()=>{msgHandler({method_name: 'getAdvList', query: {page:1,page_size:10} })}">
-        getAdvList
+        getAdvList1
       </span>
       <span @click="()=>{msgHandler({method_name: 'getLoginCookie'})}">
         getbgCookie
