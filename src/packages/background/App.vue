@@ -1,20 +1,20 @@
 <template>
   <div>
       qqq
-      <span @click="()=>{storageBgUrl({type: 'methods',url: 'storageBgUrl', data: {a:1} })}">
-          sss
+      <span @click="()=>{msgHandler({method_name: 'getAdvList', query: {page:1,page_size:10} })}">
+        getAdvList
       </span>
-      <span @click="()=>{storageBgUrl({type: 'methods',url: 'getbgCookie'})}">
+      <span @click="()=>{msgHandler({method_name: 'getLoginCookie'})}">
         getbgCookie
       </span>
-      <span @click="()=>{storageBgUrl({type: 'methods',url: 'getLocal', data:'bg_url'  })}">
-          sss
+      <span @click="()=>{msgHandler({method_name: 'getLoginLocal', query:'bg_url'  })}">
+        getLoginLocal
       </span>            
   </div>
 </template>
 
 <script setup>
-import {storageBgUrl} from "@/bg-api/index"
+import {msgHandler} from "@/chrome-api/index"
 </script>
 
 <style lang="scss">

@@ -20,7 +20,7 @@ export function handleCookie(params) {
 
 	});
 }
-function getDomain(url) {
+export function getDomain(url) {
 	if (!url) { return '' }
 	var domain = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im)[0];
 	console.log(domain)
@@ -28,31 +28,37 @@ function getDomain(url) {
 }
 // 获取某一网站，某一个key的cookie
 export function getCookieVlaue(url, key) {
-	let res = []
+	let res = {}
 	return new Promise(function (resolve, reject) {
-		chrome.tabs.query({}, tabs => {
-			const targetTabs = tabs.filter(element => {
-				return getDomain(element.url) == getDomain(url)
-			})
-			if (targetTabs.length == 0) {
-				resolve(res)
-			}
-			targetTabs.forEach((element, index) => {
-				console.log('11', index, targetTabs.length, element)
-				chrome.cookies.getAll({ url }, function (cookies) {
-					console.log(url, cookies, key)
-					res = cookies.filter((item) => {
-						console.log(item, item.name, key)
-						return item.name == key
-					})
-					console.log(res)
-					if (res) {
-						resolve(res)
-					} else if (index == targetTabs.length - 1)
-						resolve(res)
+		try {
+			chrome.tabs.query({}, tabs => {
+				const targetTabs = tabs.filter(element => {
+					return getDomain(element.url) == getDomain(url)
 				})
+				if (targetTabs.length == 0) {
+					resolve(res)
+				}
+				targetTabs.forEach((element, index) => {
+					console.log('11', index, targetTabs.length, element)
+					chrome.cookies.getAll({ url }, function (cookies) {
+						console.log(url, cookies, key)
+						res = cookies.filter((item) => {
+							console.log(item, item.name, key)
+							return item.name == key
+						})
+						console.log(res)
+						if (res) {
+							resolve(res)
+						} else if (index == targetTabs.length - 1)
+							resolve(res)
+					})
+				});
+
 			});
-		});
+		} catch (error) {
+			resolve({ value: 1 })
+
+		}
 	})
 }
 

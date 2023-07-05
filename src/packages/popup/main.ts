@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from '@/router';
 import actions from '@/shared/actions'
 
 import { setupStore } from '@/store';
@@ -29,7 +28,6 @@ function render(props: any) {
   setupDirective(app);
   // 全局注册 状态管理(store)
   setupStore(app);
-  app.use(router)
   const c = container
     ? container.querySelector("#app-popup")
     : "#app-popup"

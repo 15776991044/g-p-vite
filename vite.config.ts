@@ -20,8 +20,8 @@ const testTarget = 'http://face.dev.laningtech.net'
 
 import { resolve } from 'path';
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
-return {
-    base:"/",
+  return {
+    base: "/",
     //
     // resolve: {
     //   // 设置文件目录别名
@@ -58,11 +58,11 @@ return {
       // 如下添加代码
       headers: {
         'Access-Control-Allow-Origin': '*', // 主应用获取子应用时跨域响应头
-      },      
+      },
     },
     define: {
       'process.env': {}
-    },    
+    },
     build: {
       // lib: {
       //   entry: [
@@ -74,19 +74,19 @@ return {
       rollupOptions: {
         // 多页面入口配置
         input: {
-            popup: path.resolve(__dirname, 'popup.html'),
-            content: path.resolve(__dirname, 'content.html'),
-            background: path.resolve(__dirname, 'background.html'),
+          popup: path.resolve(__dirname, 'popup.html'),
+          content: path.resolve(__dirname, 'content.html'),
+          background: path.resolve(__dirname, 'background.html'),
         }
         , output: {
-            chunkFileNames: 'static/js/[name].js',
-            entryFileNames: "static/js/[name].js",
-            assetFileNames: "static/[ext]/name.[ext]"
+          chunkFileNames: 'static/js/[name].js',
+          entryFileNames: "static/js/[name].js",
+          assetFileNames: "static/[ext]/name.[ext]"
         }
       },
     },
     plugins: [
-      vue(),     
+      vue(),
       UnoCSS({
         /* options */
       }),
@@ -136,12 +136,12 @@ return {
         symbolId: "icon-[dir]-[name]",
       }),
       createHtmlPlugin({
-        inject:{ // 注入到页面当中的数据
-          data:{
-            title:'vite'
+        inject: { // 注入到页面当中的数据
+          data: {
+            title: 'vite'
           }
         }
-      })      
+      })
     ]
   };
 });

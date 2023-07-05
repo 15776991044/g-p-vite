@@ -4,7 +4,7 @@
       <el-button type="primary" style="margin-left: 16px" @click="drawer = true">
         查看图片列表
       </el-button>
-      <el-button type="primary" style="margin-left: 16px" @click="saveMyUrl">
+      <el-button type="primary" style="margin-left: 16px" @click="getAdvList">
         发送请求
       </el-button>      
       
@@ -38,8 +38,7 @@
 
 <script setup>
 import AddEditPerson from "@/packages/content/views/add-edit/index.vue"
-import {saveMyUrl} from "@/packages/content/index"
-import { getbgUrl,getbgCookie } from "@/msg-api/reginst"
+import { getAdvList } from "@/chrome-api/send-msg"
 
 const drawer = ref(false)
 const imgList=ref([])

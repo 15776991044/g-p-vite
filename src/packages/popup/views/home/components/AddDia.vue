@@ -41,9 +41,9 @@
 </template>
 
 <script setup lang="ts">
-import { saveBgUrl } from "@/msg-api/reginst"
 import { cloneDeep } from 'lodash-unified'
 import type { FormInstance, FormRules } from 'element-plus'
+import { setLoginLocal } from "@/chrome-api/send-msg"
 
 const emits = defineEmits(['handleUpdate'])
 
@@ -88,7 +88,7 @@ async function handleSubmit() {
 const sureloading = ref<boolean>(false)
 function handleAdvAdd() {
     sureloading.value = true
-    saveBgUrl({ ...formData.value }).then((res) => {
+    setLoginLocal({ ...formData.value }).then((res) => {
       sureloading.value = false
       emits('handleUpdate')
       ruleFormRef.value?.resetFields()

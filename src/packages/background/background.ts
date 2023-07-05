@@ -1,26 +1,24 @@
 
-import {handleCookie} from "@/chrome-utiles/getCookies"
-import {storageBgUrl} from "@/bg-api/index"
-import {lsitenLocal} from "@/chrome-utiles/storage"
+import { msgHandler } from "@/chrome-api/index"
+import { lsitenLocal } from "@/chrome-utiles/storage"
 
-function handleInstall(details){
-  console.log('chrome',chrome,chrome.tabs)
-  handleCookie()
-}
-handleInstall()
-// 监听
+// 监听background-storage有变动
 lsitenLocal()
 
+// 监听发来的消息
 try {
-  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
-    console.log("addListener...")
-    console.log(request, sender, sendResponse)
-    storageBgUrl(request, sender, sendResponse)
+  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    console.log("background收到消息")
+    console.log(request, sender)
+    msgHandler(request, sender, sendResponse)
+    //因为上面是异步的，所以要有这个
     return true;
 
   })
 } catch (error) {
-  console.log(error,data,bgMethods)
-  storageBgUrl(request, sender, sendResponse)
-    
+  console.log('监听发来的消息-err', error)
+  msgHandler(request, sender, sendResponse)
+
 }
+
+
