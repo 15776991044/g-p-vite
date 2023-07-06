@@ -1,28 +1,27 @@
 <template>
-	<div class="head">
-    <div class="tool-box">
-      <el-button type="primary" style="margin-left: 16px" @click="drawer = true">
+	<div class="head" >
+    <div class="tool-box" v-dragdiv>
+      <el-button type="primary"  @click="drawer = true">
         查看图片列表
-      </el-button>
-      <el-button type="primary" style="margin-left: 16px" @click="getAdvList">
+      </el-button><br>
+      <el-button type="primary"  @click="getAdvList">
         发送请求
-      </el-button> 
-      <el-button type="primary" style="margin-left: 16px" @click="getaaa">
+      </el-button><br> 
+      <el-button type="primary"  @click="getaaa">
         geta
-      </el-button> 
+      </el-button> <br>
       <el-button type="primary" @click="getAuditList" >
         getAuditList
         {{ bg_url }}
-      </el-button>
+      </el-button><br>
       <el-button type="primary" @click="getLoginCookie" >
         getLoginCookie
-      </el-button>     
+      </el-button>  <br>   
     </div>
 
     <el-drawer
       v-model="drawer"
-      title="图片列表"
-      :direction="rtl"
+      :with-header="false"
     >
       <el-button type="primary" style="margin-left: 16px" @click="getUrlList">
         更新图片列表
@@ -74,10 +73,11 @@ const dialog = reactive({
 <style lang="scss" scoped>
 .tool-box{
   position: fixed;
-  right:0;
+  left:calc(100% - 200px);
   top:40px;
-  padding: 40px;
-  background: #fff;
+  padding: 10px;
+  background: #999;
+  width: 200px;
   z-index: 2000;
 }
 </style>
