@@ -7,10 +7,12 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CutImageDialog: typeof import('./../components/cutImageDialog.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
+    LeadoutPic: typeof import('./../components/LeadoutPic.vue')['default']
     Menu: typeof import('./../components/Menu.vue')['default']
     Pagination: typeof import('./../components/Pagination/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

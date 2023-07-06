@@ -29,17 +29,17 @@
     <div v-for="(item,index) in imgList" :key="index" >
       <img class="add-img" style="width: 100px; height: auto" :src="item.src"  />
       <span>{{ item.src }}</span>
-      <el-button type="primary" style="margin-left: 16px" @click="()=>{dialog.visible=true}">
-        编辑
-      </el-button>
+      <cutImageDialog :img_path="item.src"/> 
+   
     </div>
+
     </el-drawer>  
     <el-dialog
       :title="'编辑'"
       v-model="dialog.visible"
       width="60%"
     >
-     <AddEditPerson v-if="dialog.visible"/>  
+     <AddEditPerson v-if="dialog.visible"/> 
     </el-dialog>
 	</div>
 </template>
@@ -47,7 +47,7 @@
 <script setup>
 import AddEditPerson from "@/packages/content/views/add-edit/index.vue"
 import { getAdvList,geta,getLoginLocal,getLoginCookie  } from "@/chrome-api/send-msg"
-
+import cutImageDialog from "@/components/cutImageDialog.vue"
 const drawer = ref(false)
 const imgList=ref([])
 const bg_url=ref("")
