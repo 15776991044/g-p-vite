@@ -9,7 +9,7 @@ const getAdvList = async function (data: object | undefined) {
 
 // 获取广告列表
 const geta = async function (data: object | undefined) {
-  const res = await post('/personcollection/person/search', data, false)
+  const res = await post('/taskapi/detail/search', data, false)
   return res
 }
 

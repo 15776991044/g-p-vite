@@ -35,7 +35,7 @@ function handleRes(res, resolve, reject) {
   } else if (code == 9998) {
     const { url } = data || {}
     ElMessageBox.alert(
-      `<a src="${url}">${url}</a>`,
+      `<a target="_blank" href="${url}">${url}</a>`,
       `${msg}`,
       {
         dangerouslyUseHTMLString: true,
