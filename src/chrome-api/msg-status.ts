@@ -12,11 +12,11 @@ export const resStatusDict = {
   }
 }
 // 通过返回结果，认识
-export function getFeedback(data) {
+export function getFeedback(data, query) {
   const { code, status } = data || {}
   if (resStatusDict[status]) {
-    return { ...resStatusDict[status], code: status }
+    return { ...resStatusDict[status], code: status, data: { ...(query || {}) } }
   } else if (resStatusDict[code]) {
-    return { ...resStatusDict[code], code: code }
+    return { ...resStatusDict[code], code: code, data: { ...(query || {}) } }
   }
 }

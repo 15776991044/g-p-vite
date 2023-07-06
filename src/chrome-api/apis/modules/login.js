@@ -23,7 +23,7 @@ const getLoginCookie = async function (data) {
   const bgCookie = await getCookieVlaue(url, 'ADMINTOKEN') || {}
   console.log('bgCookie', bgCookie)
   if (!bgCookie?.value) {
-    return getFeedback({ code: 9998 })
+    return getFeedback({ code: 9998 }, { url: url })
   }
   return { code: 0, data: { bgCookie: bgCookie?.value, bg_url: url } }
 }

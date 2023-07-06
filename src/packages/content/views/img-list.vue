@@ -7,11 +7,16 @@
       <el-button type="primary" style="margin-left: 16px" @click="getAdvList">
         发送请求
       </el-button> 
-      <el-button type="primary" style="margin-left: 16px" @click="geta">
+      <el-button type="primary" style="margin-left: 16px" @click="getaaa">
         geta
       </el-button> 
-           
-      
+      <el-button type="primary" @click="getAuditList" >
+        getAuditList
+        {{ bg_url }}
+      </el-button>
+      <el-button type="primary" @click="getLoginCookie" >
+        getLoginCookie
+      </el-button>     
     </div>
 
     <el-drawer
@@ -42,13 +47,23 @@
 
 <script setup>
 import AddEditPerson from "@/packages/content/views/add-edit/index.vue"
-import { getAdvList,geta } from "@/chrome-api/send-msg"
+import { getAdvList,geta,getLoginLocal,getLoginCookie  } from "@/chrome-api/send-msg"
 
 const drawer = ref(false)
 const imgList=ref([])
+const bg_url=ref("")
 function getUrlList(){
   imgList.value=document?.querySelectorAll('img:not(.add-img)')
   console.log('imgList.value',imgList.value)
+}
+async function getAuditList(){
+  bg_url.value =await getLoginLocal('bg_url').catch(err=>{
+    console.log(err)
+  return ''})
+  
+}
+async function getaaa(){
+  console.log(await geta())
 }
 const dialog = reactive({
   visible: false,
