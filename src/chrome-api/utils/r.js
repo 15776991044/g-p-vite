@@ -58,3 +58,24 @@
 //   }
 //   return true
 // }
+
+// 后台发
+// chrome.tabs.sendMessage(
+//   tabId: number,
+//   message: any,
+//   options ?: object,
+//   callback ?: function,
+// )
+
+// 前台收
+// chrome.runtime.onMessage.addListener(
+//   callback: function
+// )
+
+// async function sendContent(tabID) {
+//   const response = await chrome.tabs.sendMessage(tabID, { greeting: "hello" });
+//   // do something with response here, not outside the function
+//   console.log("sendContentResponse---", response);
+// }
+
+
